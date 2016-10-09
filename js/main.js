@@ -4,7 +4,7 @@ var cardTwo = 'queen';
 var cardThree = 'king';
 var cardFour = 'king';
 
-var choiceOne = cardOne;
+var choiceOne = cardTwo;
 var choiceTwo = cardFour;
 
 if (choiceOne === cardOne && choiceTwo === cardTwo) {
