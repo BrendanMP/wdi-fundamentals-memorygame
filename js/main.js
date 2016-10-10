@@ -1,16 +1,13 @@
-// Assigning values to card variables.
-var cardOne = 'queen';
-var cardTwo = 'queen';
-var cardThree = 'king';
-var cardFour = 'king';
+// Defining game board.
+var gameBoard =  document.getElementById('game-board');
 
-var choiceOne = cardTwo;
-var choiceTwo = cardFour;
-
-if (choiceOne === cardOne && choiceTwo === cardTwo) {
-    alert('It\'s a match');
-} else if (choiceOne === cardThree && choiceTwo === cardFour) {
-    alert('It\'s a match');
-} else {
-    alert('Sorry Try Again');
+// Creating cards.
+var createCards = function(cardCount){
+    for (var i = 0; i < cardCount; i++) {
+        var card = document.createElement('div');
+        card.className = 'card';
+        gameBoard.appendChild(card);
+    }
 }
+
+createCards(4);
