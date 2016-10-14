@@ -113,12 +113,12 @@ nav a:hover {
     padding: 0 1rem;
     margin: 0.5rem;
     min-width: calc(50% - 1rem);
-    min-height: 4rem;
-    line-height: 4rem;
+    min-height: 6rem;
+    line-height: 6rem;
     background: deepskyblue;
     color: #fff;
     text-align: center;
-    font-size: 5rem;
+    font-size: 2rem;
     cursor: pointer;
     transition: transform 500ms ease;
     transform: rotateY(180deg);
@@ -130,6 +130,8 @@ nav a:hover {
         min-width: calc(20% - 1rem);
         min-height: 12rem;
         line-height: 12rem;
+        font-size: 5rem;
+
 
     }
 }
