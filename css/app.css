@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -6,13 +6,13 @@ body {
     background: #fff9f0;
     font-family: "Work Sans", "Helvetica Neue", Helvetica, sans-serif;
     font-weight: 400;
-    padding:  0;
+    padding: 0;
     line-height: 1.75;
     color: #778899;
 }
 
 .wrapper {
-    max-width: 600px;
+    max-width: 960px;
     margin: 0 auto;
 }
 
@@ -57,6 +57,7 @@ a {
 
 p {
     margin: 0 0 1.5em;
+    max-width: 34rem;
 }
 
 hr {
@@ -96,6 +97,7 @@ nav a:hover {
 .board {
     margin: 0 -0.5rem;
 }
+
 .board:after {
     visibility: hidden;
     display: block;
@@ -116,12 +118,29 @@ nav a:hover {
     background: deepskyblue;
     color: #fff;
     text-align: center;
-    font-size: 4.2rem;
+    font-size: 5rem;
+    cursor: pointer;
+    transition: transform 500ms ease;
+    transform: rotateY(180deg);
+    text-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (min-width: 600px) {
+    .card {
+        min-width: calc(20% - 1rem);
+        min-height: 12rem;
+        line-height: 12rem;
+
+    }
+}
+
+.card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
 }
 
 .card.matched {
-    animation: pop 800ms ease-in-out;
-    animation-delay: 40ms;
+    animation: pop 600ms;
+    animation-delay: 30ms;
     animation-fill-mode: forwards;
 }
 
@@ -132,23 +151,12 @@ nav a:hover {
 .card.matched.second {
     animation-delay: 0ms;
 }
+
 .card.selected {
-    transition: all 100ms ease;
-    /*animation: bounceInDown 100ms ease-in-out;*/
-}
-
-.card.cleared span {
-    animation: fade-out 500ms ease;
-}
-
-
-@media screen and (min-width:600px) {
-    .card {
-        min-width: calc(25% - 1rem);
-        min-height: 8rem;
-        line-height: 8rem;
-
-    }
+    /*transition: all 600ms ease;*/
+    /*opacity: 0.9;*/
+    transform: rotateY(0deg);
+    background: hidden;
 }
 
 .heart {
@@ -170,7 +178,7 @@ nav a:hover {
 
 @keyframes beating {
     0% {
-        transform: scale(1);
+        transform: scale(0.8);
     }
     20% {
         transform: scale(1.0);
@@ -193,7 +201,6 @@ nav a:hover {
     from, 20%, 40%, 60%, 80%, to {
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
     }
-
     0% {
         /*opacity: 0;*/
         transform: scale3d(1, 1, 1);
