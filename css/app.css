@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body {
     background: #fff9f0;
     font-family: "Work Sans", "Helvetica Neue", Helvetica, sans-serif;
@@ -90,23 +94,35 @@ nav a:hover {
 }
 
 .board {
-    overflow: auto;
+    margin: 0 -0.5rem;
+}
+.board:after {
+    visibility: hidden;
     display: block;
-    height: 80%;
-    margin: 0 -2% 5em;
+    font-size: 0;
+    content: " ";
     clear: both;
+    height: 0;
 }
 
 .card {
-    box-sizing: border-box;
-    display: inline-block;
     float: left;
-    height: 200px;
-    margin: 2%;
-    width: 46%;
-    box-shadow: inset 0 0 0 0.1em rgba(0, 0, 0, 0.1);
-    background: yellow;
-    border-radius: .5em;
+    display: inline-block;
+    padding: 0.5rem 1rem 1rem;
+    margin: 0.5rem;
+    min-width: calc(50% - 1rem);
+    min-height: 4rem;
+    background: deepskyblue;
+    color: #fff;
+}
+
+
+@media screen and (min-width:600px) {
+    .card {
+        min-width: calc(25% - 1rem);
+        min-height: 8rem;
+
+    }
 }
 
 .heart {
