@@ -57,7 +57,7 @@ function flipCard() {
             addMatch();
         } else {
             console.log('- no match!');
-            setTimeout(clearCards, 600);
+            setTimeout(clearCards, 400);
         }
 
     }
