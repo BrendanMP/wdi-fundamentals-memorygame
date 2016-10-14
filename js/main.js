@@ -1,7 +1,7 @@
 //(function(){})();
 
 var gameBoard = document.getElementById('game-board');
-var cardsValues = ["💩", "🔑", "🔥", "💸"];
+var cardsValues = ["💩", "🔑", "🔥", "💸","🔫"];
 var card;
 var deck = [];
 var inPlay = [];
@@ -29,29 +29,6 @@ function createCard() {
     card = document.createElement('div');
     card.className = 'card';
     card.addEventListener('click', flipCard);
-}
-
-function clearCards() {
-    var card_1 = document.getElementById(inPlay[0].card.id);
-    var card_2 = document.getElementById(inPlay[1].card.id);
-    card_1.innerHTML = '';
-    card_1.className = 'card cleared';
-    card_2.innerHTML = '';
-    card_2.className = 'card cleared';
-    inPlay.length = 0;
-}
-
-function addMatch() {
-    var card_1 = document.getElementById(inPlay[0].card.id);
-    var card_2 = document.getElementById(inPlay[1].card.id);
-    card_1.innerHTML = inPlay[0].card.attribute;
-    card_1.removeEventListener('click', flipCard);
-    card_1.className = 'card selected matched';
-    card_2.innerHTML = inPlay[1].card.attribute;
-    card_2.removeEventListener('click', flipCard);
-    card_2.className = 'card selected matched second';
-
-    inPlay.length = 0;
 }
 
 function dealCards() {
@@ -85,6 +62,29 @@ function flipCard() {
 
     }
 }
+
+function addMatch() {
+    var card_1 = document.getElementById(inPlay[0].card.id);
+    var card_2 = document.getElementById(inPlay[1].card.id);
+    card_1.innerHTML = inPlay[0].card.attribute;
+    card_1.removeEventListener('click', flipCard);
+    card_1.className = 'card selected';
+    card_2.innerHTML = inPlay[1].card.attribute;
+    card_2.removeEventListener('click', flipCard);
+    card_2.className = 'card selected';
+    inPlay.length = 0;
+};
+
+function clearCards() {
+    var card_1 = document.getElementById(inPlay[0].card.id);
+    var card_2 = document.getElementById(inPlay[1].card.id);
+    card_1.innerHTML = '';
+    card_1.className = 'card cleared';
+    card_2.innerHTML = '';
+    card_2.className = 'card cleared';
+    inPlay.length = 0;
+}
+
 
 createDeck();
 dealCards();
