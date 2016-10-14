@@ -1,10 +1,14 @@
-//(function(){})();
+// WDI Fundamentals Pre-Work
+//
+// Hopefully a more robust version of the pre-work assignment.
+//
 
 var gameBoard = document.getElementById('game-board');
-var cardsValues = ["💩", "🔑", "🔥", "💸","🔫"];
+var cardsValues = ["💩", "🔑", "🔥", "💸"];
 var card;
 var deck = [];
 var inPlay = [];
+var matched = [];
 
 function shuffleDeck() {
     // Fisher–Yates Shuffle
@@ -19,6 +23,7 @@ function shuffleDeck() {
 }
 
 function createDeck() {
+    deck.length = 0;
     for (var i = 0; i < cardsValues.length; i++) {
         deck.push(cardsValues[i], cardsValues[i]);
     }
@@ -61,6 +66,11 @@ function flipCard() {
         }
 
     }
+    if (matched.length === deck.length) {
+        console.log('you win');
+
+        setTimeout(clearBoard, 2000);
+    }
 }
 
 function addMatch() {
@@ -72,8 +82,9 @@ function addMatch() {
     card_2.innerHTML = inPlay[1].card.attribute;
     card_2.removeEventListener('click', flipCard);
     card_2.className = 'card selected';
+    matched.push(inPlay[0],inPlay[1]);
     inPlay.length = 0;
-};
+}
 
 function clearCards() {
     var card_1 = document.getElementById(inPlay[0].card.id);
@@ -85,6 +96,24 @@ function clearCards() {
     inPlay.length = 0;
 }
 
+function clearBoard() {
+    matched.length = 0;
+    for (var i = 0; i < deck.length; i++) {
+        var card = document.getElementById('card-' + (i + 1));
+        //card.innerHTML = '';
+        card.remove(this);
+        if ( i + 1 === deck.length) {
+            console.log('reset');
+            createDeck();
+            dealCards();
+        }
+    }
+}
 
-createDeck();
-dealCards();
+function init() {
+    createDeck();
+    dealCards();
+}
+
+init();
+
