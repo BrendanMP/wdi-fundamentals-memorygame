@@ -12,14 +12,14 @@ var matched = [];
 
 function shuffleDeck() {
     // Fisher–Yates Shuffle
-    var m = deck.length, t, i;
-    while (m) {
-        i = Math.floor(Math.random() * m--);
-        t = deck[m];
-        deck[m] = deck[i];
-        deck[i] = t;
-    }
-    return deck;
+    //var m = deck.length, t, i;
+    //while (m) {
+    //    i = Math.floor(Math.random() * m--);
+    //    t = deck[m];
+    //    deck[m] = deck[i];
+    //    deck[i] = t;
+    //}
+    //return deck;
 }
 
 function createDeck() {
@@ -50,25 +50,25 @@ function flipCard() {
     this.className = 'card selected';
     if (inPlay.length <= 1) {
         console.log('first card - ' + inPlay[0].card.attribute);
-        this.innerHTML = inPlay[0].card.attribute;
+        this.innerHTML = '<span class="fade-in">' +inPlay[0].card.attribute + '</span>';
     } else if (inPlay.length === 2) {
         console.log('second card - ' + inPlay[1].card.attribute);
-        this.innerHTML = inPlay[1].card.attribute;
         if (inPlay[0].card.id === this.id) {
             console.log('- same card!');
             inPlay.pop();
         } else if (inPlay[0].card.attribute === inPlay[1].card.attribute) {
+            this.innerHTML = '<span class="fade-in">' + inPlay[1].card.attribute + '</span>';
             console.log('- match!');
             addMatch();
         } else {
+            this.innerHTML = '<span class="fade-in">' + inPlay[1].card.attribute + '</span>';
             console.log('- no match!');
-            setTimeout(clearCards, 400);
+            setTimeout(clearCards, 600);
         }
 
     }
     if (matched.length === deck.length) {
         console.log('you win');
-
         setTimeout(clearBoard, 2000);
     }
 }
@@ -89,9 +89,9 @@ function addMatch() {
 function clearCards() {
     var card_1 = document.getElementById(inPlay[0].card.id);
     var card_2 = document.getElementById(inPlay[1].card.id);
-    card_1.innerHTML = '';
+    card_1.innerHTML = '<span class="fade-out"></span>';
     card_1.className = 'card cleared';
-    card_2.innerHTML = '';
+    card_2.innerHTML = '<span class="fade-out"></span>';
     card_2.className = 'card cleared';
     inPlay.length = 0;
 }
@@ -100,7 +100,6 @@ function clearBoard() {
     matched.length = 0;
     for (var i = 0; i < deck.length; i++) {
         var card = document.getElementById('card-' + (i + 1));
-        //card.innerHTML = '';
         card.remove(this);
         if ( i + 1 === deck.length) {
             console.log('reset');

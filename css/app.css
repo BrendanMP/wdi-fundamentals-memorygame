@@ -55,8 +55,8 @@ a {
     text-decoration: none;
 }
 
-p {
-    margin: 0 0 1.5em;
+p, h2 {
+    margin: 0 auto 1.5em;
     max-width: 34rem;
 }
 
@@ -85,7 +85,7 @@ nav a {
 
 nav a:hover {
     color: #00bfff;
-    box-shadow: inset 0 -0.1em 0 0 #00bfff;
+    box-shadow: inset 0 2px 0 0 #00bfff;
 }
 
 #play {
@@ -122,7 +122,40 @@ nav a:hover {
     cursor: pointer;
     transition: transform 500ms ease;
     transform: rotateY(180deg);
-    text-shadow: 0px 2px 20px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+    animation: bounceInDown 700ms ease;
+}
+
+.card:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.card:nth-child(2) {
+    animation-delay: 40ms;
+}
+
+.card:nth-child(3) {
+    animation-delay: 80ms;
+}
+
+.card:nth-child(4) {
+    animation-delay: 120ms;
+}
+
+.card:nth-child(5) {
+    animation-delay: 160ms;
+}
+
+.card:nth-child(6) {
+    animation-delay: 200ms;
+}
+
+.card:nth-child(7) {
+    animation-delay: 240ms;
+}
+
+.card:nth-child(8) {
+    animation-delay: 280ms;
 }
 
 @media screen and (min-width: 600px) {
@@ -131,23 +164,23 @@ nav a:hover {
         min-height: 12rem;
         line-height: 12rem;
         font-size: 5rem;
-
-
     }
 }
 
 .card:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    transform: scale(1.01) rotateY(180deg);
 }
 
 .card.matched {
     animation: pop 600ms;
-    animation-delay: 30ms;
+    animation-delay: 2000ms;
     animation-fill-mode: forwards;
 }
 
-.card span {
-    display: block;
+.card:hover.matched {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    transform: scale(1.0) rotateY(180deg);
 }
 
 .card.matched.second {
@@ -155,10 +188,10 @@ nav a:hover {
 }
 
 .card.selected {
-    /*transition: all 600ms ease;*/
-    /*opacity: 0.9;*/
     transform: rotateY(0deg);
-    background: hidden;
+}
+.card.selected span {
+    animation: fade-in 300ms ease;
 }
 
 .heart {
@@ -167,15 +200,6 @@ nav a:hover {
     font-size: 0.9em;
     color: #ff1493;
     animation: beating 1.2s ease-out infinite;
-}
-
-@keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
 }
 
 @keyframes beating {
@@ -227,4 +251,68 @@ nav a:hover {
     to {
         transform: scale3d(1, 1, 1);
     }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes bounceInDown {
+    from, 60%, 75%, 90%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, 5px, 0);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+.bounceInDown {
+    animation-name: bounceInDown;
+}
+
+.fade-in {
+    animation: fade-in 300ms ease;
+}
+
+.fade-out {
+    animation: fade-out 300ms ease;
 }
