@@ -12,14 +12,14 @@ var matched = [];
 
 function shuffleDeck() {
     // Fisher–Yates Shuffle
-    //var m = deck.length, t, i;
-    //while (m) {
-    //    i = Math.floor(Math.random() * m--);
-    //    t = deck[m];
-    //    deck[m] = deck[i];
-    //    deck[i] = t;
-    //}
-    //return deck;
+    var m = deck.length, t, i;
+    while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = deck[m];
+        deck[m] = deck[i];
+        deck[i] = t;
+    }
+    return deck;
 }
 
 function createDeck() {
