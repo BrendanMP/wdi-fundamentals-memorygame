@@ -35,7 +35,7 @@ h1, h2, h3 {
 h1 {
     margin: 0;
     color: #00bfff;
-    font-size: 2.5rem;
+    font-size: 10vw;
     text-transform: uppercase;
 }
 
@@ -47,9 +47,10 @@ h2 {
 }
 
 h3 {
+    font-size: 4.5vw;
     color: slategray;
     margin-top: 0;
-    margin-bottom: 3em;
+    margin-bottom: 2rem;
     font-weight: 400;
 }
 
@@ -70,10 +71,10 @@ hr {
 
 nav {
     margin-bottom: 2rem;
-    animation: bounceInDown 900ms;
 }
 
 nav a {
+    opacity: 0;
     display: inline-block;
     text-transform: uppercase;
     color: slategray;
@@ -81,6 +82,14 @@ nav a {
     font-size: 0.9em;
     transition: all 100ms ease;
     margin-right: 2.5em;
+    animation: title-bounce 700ms ease-in;
+    animation-delay: 300ms;
+    animation-fill-mode: forwards;
+}
+
+nav a:nth-child(2) {
+    animation-delay: 400ms;
+    animation-duration: 600ms;
 }
 
 nav a:hover {
@@ -89,6 +98,7 @@ nav a:hover {
 }
 
 header.title {
+    position: relative;
     opacity: 0;
     animation: title-bounce 500ms;
     animation-delay: 500ms;
@@ -96,9 +106,8 @@ header.title {
 }
 
 #play {
-    text-transform: uppercase;
-    margin-bottom: 0;
-    font-size: 3em;
+    position: absolute;
+    top: -2rem;
 }
 
 .board {
@@ -165,24 +174,6 @@ header.title {
     animation-delay: 350ms;
 }
 
-@media screen and (min-width: 600px) {
-    .nav {
-        margin-bottom: 4em;
-    }
-    .wrapper {
-        padding: 0 2rem;
-    }
-    .card {
-        min-width: calc(25% - 1rem);
-        min-height: 12rem;
-        line-height: 12rem;
-        font-size: 5rem;
-    }
-    hr {
-        margin: 4rem 0;
-    }
-}
-
 .card:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
     transform: scale(1.01) rotateY(180deg);
@@ -206,6 +197,7 @@ header.title {
 .card.selected {
     transform: rotateY(0deg);
 }
+
 .card.selected span {
     animation: fade-in 300ms ease;
 }
@@ -359,4 +351,34 @@ header.title {
 
 .fade-out {
     animation: fade-out 300ms ease;
+}
+
+@media screen and (min-width: 600px) {
+    .nav {
+        margin-bottom: 4em;
+    }
+
+    .wrapper {
+        padding: 0 2rem;
+    }
+
+    .card {
+        min-width: calc(25% - 1rem);
+        min-height: 12rem;
+        line-height: 12rem;
+        font-size: 5rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    hr {
+        margin: 4rem 0;
+    }
 }
