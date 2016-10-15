@@ -130,7 +130,7 @@ header.title {
     transition: transform 500ms ease;
     transform: rotateY(180deg);
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-    animation: bounceInDown 700ms ease;
+    animation: bounceInDown 900ms ease;
 }
 
 .card:nth-child(1) {
